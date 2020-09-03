@@ -82,9 +82,9 @@ async function onAddedReaction(reaction) {
 
     await db.addToScore(emoji, author, 1);
 
-    if (emoji == "📌") {
-        await pinMessage(reaction.message);
-    }
+//    if (emoji == "📌") {
+//        await pinMessage(reaction.message);
+//    }
 }
 
 async function onRemovedReaction(reaction) {
