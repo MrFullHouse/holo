@@ -1,0 +1,10 @@
+version: '2'
+services:
+  reacty:
+    container_name: reacty
+    build: .
+    command: node reacty.js
+    volumes:
+      - database:/home/app/reacty/database
+volumes:
+  database: { }
