@@ -30,7 +30,10 @@ Show statistics an emoji
 customize your Holo-messages in reacty.js functions - getUserScores; getEmojiScores
 
 ## Setup
-Install Docker if you don't already have it.
+Install Docker and dependencies if you don't already have it.
+```
+yum -y install epel-release docker docker-compose
+```
 
 While in project root, run
 ```
