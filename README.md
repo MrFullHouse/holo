@@ -18,10 +18,12 @@ Show statistics an emoji
 ```
 !holo :emoji:
 ```
+![Example emoji](https://i.imgur.com/KbLjZ6I.jpg)
 
 ```
 !holo @username
 ```
+![Example username](https://i.imgur.com/UGvGqA6.jpg)
 
 ## Setup
 Install Docker if you don't already have it.
