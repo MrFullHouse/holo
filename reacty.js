@@ -44,11 +44,13 @@ function logException(message, exception) {
 }
 
 async function onMessage(message) {
-    if (message.content.startsWith("!holo <@")) {
-        await getUserScores(message);
-    }
-    if (message.content.startsWith("!holo <:")) {
-        await getEmojiScores(message);
+    if (message.content.startsWith("!holo")) {
+      if (message.content.startsWith("!holo <@")) {
+          await getUserScores(message);
+      }
+      else {
+          await getEmojiScores(message);
+      }
     }
     else if (message.content.startsWith("!clear-holo")) {
         await clearScores(message);
