@@ -1,3 +1,5 @@
+![holo](https://images-na.ssl-images-amazon.com/images/I/91FzI9qedLL._AC_SX425_.jpg)
+
 # Holo-girl bot
 A Discord bot that logs reactions and shows statistics for users and emoji's
 
