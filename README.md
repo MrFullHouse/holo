@@ -25,6 +25,8 @@ Show statistics an emoji
 ```
 ![Example username](https://i.imgur.com/UGvGqA6.jpg)
 
+customize your Holo-messages in reacty.js functions - getUserScores; getEmojiScores
+
 ## Setup
 Install Docker if you don't already have it.
 
