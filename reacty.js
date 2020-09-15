@@ -45,6 +45,7 @@ function logException(message, exception) {
 
 async function onMessage(message) {
     if (message.content.startsWith("!holo")) {
+//        await message.channel.send("<:No:752556133339758734>")
       if (message.content.startsWith("!holo <@")) {
           await getUserScores(message);
       }
@@ -123,7 +124,11 @@ async function getEmojiScores(message) {
             .map(score => score.username + ": " + score.points)
             .join("\n");
         let response = "Почетные получатели " + emoji + "\n" + results;
-        message.channel.send(response);
+        message.channel.send(response)
+		.then(msg => {
+                        msg.delete(10000);
+                })
+                .catch(/*Your Error handling if the Message isn't returned, sent, etc.*/);
     }
     catch (err) {
         console.error(err);
@@ -139,7 +144,11 @@ async function getUserScores(message) {
             .map(score => (client.emojis.find(emoji => emoji.name === score.emoji) || score.emoji) + ": " + score.points)
             .join("\n");
         let response = "Че у нас обычно кушает " + userid + "\n" + results;
-        message.channel.send(response);
+        message.channel.send(response)
+		.then(msg => {
+			msg.delete(30000);
+		})
+		.catch(/*Your Error handling if the Message isn't returned, sent, etc.*/);
     }
     catch (err) {
         console.error(err);
