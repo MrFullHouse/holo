@@ -43,7 +43,7 @@ Database.prototype = {
     },
 
     getTopEmojiScore: async function () {
-        row = await this.sql.all(`SELECT emoji,sum(points) as points fROM Score group BY emoji order by sum(points) desc limit 5;`);
+        row = await this.sql.all(`SELECT emoji,sum(points) as points fROM Score group BY emoji order by sum(points) desc limit 3;`);
         if (!row) {
             throw "ERROR: Missing top emoji stat";
         } else {
@@ -51,13 +51,22 @@ Database.prototype = {
         }
     },
     getTopUserScore: async function () {
-        row = await this.sql.all(`SELECT username,sum(points) as points fROM Score group BY username order by sum(points) desc limit 5;`);
+        row = await this.sql.all(`SELECT username,sum(points) as points fROM Score group BY username order by sum(points) desc limit 3;`);
         if (!row) {
             throw "ERROR: Missing top user stat";
         } else {
             return row;
         }
     },
+    getTopComboScore: async function () {
+        row = await this.sql.all(`SELECT username,max(points) as points,emoji fROM Score group BY username order by max(points) desc limit 5;`);
+        if (!row) {
+            throw "ERROR: Missing top emoji stat";
+        } else {
+            return row;
+        }
+    },
+
     getUserScore: async function (userid) {
 //        userid_string = userid.substring(userid.indexOf("<") + 1, userid.lastIndexOf(">"));
         userid_string = userid.replace(/[^0-9]/g, '');

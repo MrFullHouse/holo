@@ -192,7 +192,21 @@ async function getTopScores(message) {
     catch (err) {
         console.error(err);
     }
-
+    try {
+	let comboData = await db.getTopComboScore();
+        let results = comboData
+            .map(score => (client.emojis.find(emoji => emoji.name === score.emoji) || score.emoji) + " + " + score.username + ": "+ score.points)
+            .join("\n");
+        let response = "Самые популярные комбинации: \n" + results;
+        message.channel.send(response)
+		.then(msg => {
+			msg.delete(45000);
+		})
+		.catch(/*Your Error handling if the Message isn't returned, sent, etc.*/);
+    }
+    catch (err) {
+        console.error(err);
+    }
 }
 
 async function clearScores(message) {
