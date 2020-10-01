@@ -46,12 +46,18 @@ function logException(message, exception) {
 async function onMessage(message) {
     if (message.content.startsWith("!holo")) {
 //        await message.channel.send("<:No:752556133339758734>")
-      if (message.content.startsWith("!holo <@")) {
+      if (message.content.startsWith("!holo top")) {
+          await getTopScores(message);
+      }
+      else if (message.content.startsWith("!holo <@")) {
           await getUserScores(message);
       }
       else {
           await getEmojiScores(message);
       }
+    }
+    else if (message.content.startsWith("!top-holo")) {
+        await getTopScores(message);
     }
     else if (message.content.startsWith("!clear-holo")) {
         await clearScores(message);
@@ -153,6 +159,40 @@ async function getUserScores(message) {
     catch (err) {
         console.error(err);
     }
+}
+
+async function getTopScores(message) {
+    try {
+	let emojiData = await db.getTopEmojiScore();
+        let results = emojiData
+            .map(score => (client.emojis.find(emoji => emoji.name === score.emoji) || score.emoji) + ": " + score.points)
+            .join("\n");
+        let response = "Любимые эмодзи: \n" + results;
+        message.channel.send(response)
+		.then(msg => {
+			msg.delete(30000);
+		})
+		.catch(/*Your Error handling if the Message isn't returned, sent, etc.*/);
+    }
+    catch (err) {
+        console.error(err);
+    }
+    try {
+        let userData = await db.getTopUserScore();
+        let results = userData
+            .map(score => score.username + ": " + score.points)
+            .join("\n");
+        let response = "Топ получателей эмодзи: \n" + results;
+        message.channel.send(response)
+		.then(msg => {
+			msg.delete(30000);
+		})
+		.catch(/*Your Error handling if the Message isn't returned, sent, etc.*/);
+    }
+    catch (err) {
+        console.error(err);
+    }
+
 }
 
 async function clearScores(message) {
