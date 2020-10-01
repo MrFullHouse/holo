@@ -16,18 +16,29 @@ Any time a message is reacted to the emoji-count for that emoji and that message
 
 ### Comands
 
-Show statistics an emoji
+
+Show user-stat an emoji
 ```
 !holo :emoji:
 ```
 ![Example emoji](https://i.imgur.com/KbLjZ6I.jpg)
 
+
+Show emoji-stat an user
 ```
 !holo @username
 ```
 ![Example username](https://i.imgur.com/UGvGqA6.jpg)
 
-customize your Holo-messages in reacty.js functions - getUserScores; getEmojiScores
+
+Show top-users, top-emojis, and top-combo's
+```
+!holo top
+```
+![Example username](https://i.imgur.com/B6RYx9k.png)
+
+
+customize your Holo-messages in reacty.js functions - getUserScores; getEmojiScores; getTopScores
 
 ## Setup
 Install Docker and dependencies if you don't already have it.
